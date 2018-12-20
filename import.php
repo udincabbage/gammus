@@ -1,20 +1,26 @@
 <?php
-include_once 'header.php';
-?>
-<h2>Import Santri</h2>
-<?php
 ini_set('max_execution_time', 3000);
 if (!$_POST) { ?>
-<html>
-    <body>
+<?php include_once 'header.php'; ?>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-8">
+    <div class="page-header">
+      <h5>Import Santri</h5>
+    </div>
         <form action="" method="post" enctype="multipart/form-data">
             Choose your file:
             <input name="csv" type="file" id="csv" />
             <br>
-            <input type="submit" name="Submit" value="Submit" />
+            <!--<input type="submit" name="Submit" value="Submit" />-->
+            <button type="submit" class="btn btn-primary" name="Submit">Simpan</button>
+            <button type="button" onclick="location.href='santri.php'" class="btn btn-success">Kembali</button>
         </form>
-    </body>
-</html>
+  </div>
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <?php include_once 'sidebar.php'; ?>
+    </div>
+</div>
+<?php include_once 'footer.php'; ?>
 <?php
 } else {
 $connect = mysqli_connect("localhost", "root", "", "nkit_sms_santri");
@@ -42,38 +48,60 @@ values(
         $i++;
     }
     fclose($handle);
+
+    ?>
+    <?php include_once 'header.php'; ?>
+    <?php
     print "
     <div class='alert alert-success alert-dismissible' role='alert'>
       <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
       <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href='santri.php'>lihat semua data</a>.
-    </div>
-    ";
+    </div> ";
     ?>
-<html>
-    <body>
-        <form action="" method="post" enctype="multipart/form-data">
-            Choose your file:
-            <input name="csv" type="file" id="csv" />
-            <br>
-            <input type="submit" name="Submit" value="Submit" />
-        </form>
-    </body>
-</html>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8">
+        <div class="page-header">
+          <h5>Import Santri</h5>
+        </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                Choose your file:
+                <input name="csv" type="file" id="csv" />
+                <br>
+                <!--<input type="submit" name="Submit" value="Submit" />-->
+                <button type="submit" class="btn btn-primary" name="Submit">Simpan</button>
+      				  <button type="button" onclick="location.href='santri.php'" class="btn btn-success">Kembali</button>
+            </form>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <?php include_once 'sidebar.php'; ?>
+        </div>
+    </div>
+    <?php include_once 'footer.php'; ?>
 <?php
 }
 else
 {
 ?>
-<html>
-    <body>
+<?php include_once 'header.php'; ?>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-8">
+    <div class="page-header">
+      <h5>Import Santri</h5>
+    </div>
         <form action="" method="post" enctype="multipart/form-data">
             Choose your file:
             <input name="csv" type="file" id="csv" />
             <br>
-            <input type="submit" name="Submit" value="Submit" />
+            <!--<input type="submit" name="Submit" value="Submit" />-->
+            <button type="submit" class="btn btn-primary" name="Submit">Simpan</button>
+            <button type="button" onclick="location.href='santri.php'" class="btn btn-success">Kembali</button>
         </form>
-    </body>
-</html>
+  </div>
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <?php include_once 'sidebar.php'; ?>
+    </div>
+</div>
+<?php include_once 'footer.php'; ?>
 <?php
 }
 }
