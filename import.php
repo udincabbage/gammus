@@ -1,4 +1,7 @@
-<h2>Upload absensi</h2>
+<?php
+include_once 'header.php';
+?>
+<h2>Import Santri</h2>
 <?php
 ini_set('max_execution_time', 3000);
 if (!$_POST) { ?>
@@ -14,7 +17,7 @@ if (!$_POST) { ?>
 </html>
 <?php
 } else {
-$connect = mysqli_connect("localhost", "root", "", "absensi");
+$connect = mysqli_connect("localhost", "root", "", "nkit_sms_santri");
 if ($_FILES['csv']['size'] > 0) {
     //get the csv file
     $file = $_FILES['csv']['tmp_name'];
@@ -22,8 +25,8 @@ if ($_FILES['csv']['size'] > 0) {
     $i = 0;
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         if ($i > 0) {
-$import = "INSERT into absensi(
- nip,id_absensi,hari,tanggal,jam_masuk,jam_keluar,terlambat,tanpa_keterangan,lama_kerja)
+$import = "INSERT into t_santri(
+ id,created_at,updated_at,status,nis,nama_santri,tahun_akademik,status_santri)
 values(
 '$data[0]',
 '$data[1]',
@@ -32,15 +35,19 @@ values(
 '$data[4]',
 '$data[5]',
 '$data[6]',
-'$data[7]',
-'$data[8]'
+'$data[7]'
 )";
             $connect->query($import);
         }
         $i++;
     }
     fclose($handle);
-    print "Import done";
+    print "
+    <div class='alert alert-success alert-dismissible' role='alert'>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+      <strong>Berhasil Tambah Data!</strong> Tambah lagi atau <a href='santri.php'>lihat semua data</a>.
+    </div>
+    ";
     ?>
 <html>
     <body>
