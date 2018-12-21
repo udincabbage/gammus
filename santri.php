@@ -10,7 +10,8 @@ $stmt = $pro->readAll();
 		</div>
 		<div class="col-md-6 text-right">
 			<button onclick="location.href='santri-baru.php'" class="btn btn-primary">Tambah Data</button>
-			<button onclick="location.href='import.php'" class="btn btn-primary">Import Data</button>
+			<button onclick="location.href='import.php'" class="btn btn-warning">Import Data</button>
+			<button onclick="location.href='./tmp/santri.csv'" class="btn btn-success">Download Template CSV</button>
 		</div>
 	</div>
 	<br/>
